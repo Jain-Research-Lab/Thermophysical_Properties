@@ -17,7 +17,6 @@ def get_AB_GRID(AB_table_config, library_flag, parameters):
     P_min = AB_table_config["P_min"]
     P_max = AB_table_config["P_max"]
     H_max = AB_table_config["H_max"]
-    T_SCALE = AB_table_config["T_SCALE"]
 
     # all pressure breakpoints
     P_vec = np.linspace(P_min, P_max, szA)
@@ -47,13 +46,13 @@ def get_AB_GRID(AB_table_config, library_flag, parameters):
     L_REF = (r*np.abs(H_max - H_min)/1000.0 + np.abs(D_max - D_min) + r*np.abs(T_max - T_sat)) / (szB - 1)
 
     # sample along DH
-    LUT = get_AB_GRID_dDH(library_flag, parameters, szB, P_vec, H_min, L_REF, r, T_SCALE, 'not_last')
-    LUT = resample_pressure(library_flag, parameters, LUT, szB, H_min, L_REF, r, T_SCALE)
+    LUT = get_AB_GRID_dDH(library_flag, parameters, szB, P_vec, H_min, L_REF, r, 'not_last')
+    LUT = resample_pressure(library_flag, parameters, LUT, szB, H_min, L_REF, r)
     
     return LUT
 
 ############# Constant DH Breakpoint Spacing #############
-def get_AB_GRID_dDH(library_flag, parameters, szB, P_vec, H_min, L_REF, r, T_SCALE, iteration):
+def get_AB_GRID_dDH(library_flag, parameters, szB, P_vec, H_min, L_REF, r, iteration):
     szA = P_vec.size
     A_vec = np.linspace(0, szA-1, szA)           # When inverting, get this FIRST
     B_vec = np.linspace(0, szB-1, szB)           # When inverting, get this SECOND
@@ -121,7 +120,7 @@ def get_AB_GRID_dDH(library_flag, parameters, szB, P_vec, H_min, L_REF, r, T_SCA
             ORACLE.update(CP.PQ_INPUTS, P, 1)
             h_g = ORACLE.hmass()
 
-        return r*np.abs(H0 - H1)/1000.0 + np.abs(D0 - D1) + (H1 >= h_g)*T_SCALE*np.abs(T0 - T1)
+        return r*np.abs(H0 - H1)/1000.0 + np.abs(D0 - D1)
 
     def dist_res(H1, H0, P, L_REF):
         return get_distance_2d_DH(H0, H1, P, ORACLE) - np.abs(L_REF)
@@ -181,7 +180,7 @@ def get_AB_GRID_dDH(library_flag, parameters, szB, P_vec, H_min, L_REF, r, T_SCA
 
     return AB_LUT_CLASS(A_grid, B_grid, D_grid, H_grid, E_grid, P_grid, T_grid, Q_grid, S_grid)
 
-def resample_pressure(library_flag, parameters, LUT, szB, H_min, L_REF, r, T_SCALE):
+def resample_pressure(library_flag, parameters, LUT, szB, H_min, L_REF, r):
     # resample pressure breakpoints
     L = np.max(np.abs(LUT.D_grid[1:,:] - LUT.D_grid[:-1,:]) + np.abs(LUT.h_grid[1:,:] - LUT.h_grid[:-1,:]) + np.abs(LUT.P_grid[1:,:] - LUT.P_grid[:-1,:]), axis=1)
     L_data = np.cumsum(np.hstack((0, L)))
@@ -189,7 +188,7 @@ def resample_pressure(library_flag, parameters, LUT, szB, H_min, L_REF, r, T_SCA
     P_vec = 1000.0*np.interp(L_vec, L_data, LUT.P_grid[:,0])
 
     # sample along DH
-    return get_AB_GRID_dDH(library_flag, parameters, szB, P_vec, H_min, L_REF, r, T_SCALE, 'not_last')
+    return get_AB_GRID_dDH(library_flag, parameters, szB, P_vec, H_min, L_REF, r, 'not_last')
 
 def safe_extrapolate_grid(grid):
     m1 = np.mean(grid[:,1] - grid[:,0])

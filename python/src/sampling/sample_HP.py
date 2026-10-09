@@ -7,32 +7,53 @@ import importlib
 import h5py
 import os
 
-def get_HP_GRID(HP_table_config, parameters):
+def make_input_vec(table_config):
     # unpack config
-    Hmin = HP_table_config["Hmin"]
-    Hmax = HP_table_config["Hmax"]
-    Pmin = HP_table_config["Pmin"]
-    Pmax = HP_table_config["Pmax"]
-    szH = parameters["sz"][0]
-    szP = parameters["sz"][1]
-    library_flag = HP_table_config["library_flag"]
+    P1min = table_config.P1min
+    P1max = table_config.P1max
+    P2min = table_config.P2min
+    P2max = table_config.P2max
+    szP1 = table_config.sz[0]
+    szP2 = table_config.sz[1]
     
-    # get linear, gridded sampling of the input space
-    H_brkpt = np.linspace(Hmin, Hmax, num=szH)
-    P_brkpt = np.linspace(Pmin, Pmax, num=szP)
-    H_gridT, P_gridT = np.meshgrid(H_brkpt, P_brkpt)
-    H_vec = H_gridT.reshape((H_gridT.size, 1))
-    P_vec = P_gridT.reshape((P_gridT.size, 1))
-    HP_vec = np.hstack((H_vec, P_vec))
+    P1_brkpt = np.linspace(P1min, P1max, num=szP1)
+    P2_brkpt = np.linspace(P2min, P2max, num=szP2)
+    P1_gridT, P2_gridT = np.meshgrid(P1_brkpt, P2_brkpt, indexing='ij')
+    P1_vec = P1_gridT.reshape((szP1*szP2, 1))
+    P2_vec = P2_gridT.reshape((szP1*szP2, 1))
+    return np.hstack((P1_vec, P2_vec)) 
+
+def get_HP_GRID(table_config):
+    # # unpack config
+    # Hmin = table_config.P1min
+    # Hmax = table_config.P1max
+    # Pmin = table_config.P2min
+    # Pmax = table_config.P2max
+    
+    # sz = table_config.sz
+    # szH = parameters["sz"][0]
+    # szP = parameters["sz"][1]
+    # library_flag = table_config.library_flag
+    
+    # # get linear, gridded sampling of the input space
+    # H_brkpt = np.linspace(Hmin, Hmax, num=szH)
+    # P_brkpt = np.linspace(Pmin, Pmax, num=szP)
+    # H_gridT, P_gridT = np.meshgrid(H_brkpt, P_brkpt)
+    # H_vec = H_gridT.reshape((H_gridT.size, 1))
+    # P_vec = P_gridT.reshape((P_gridT.size, 1))
+    # HP_vec = np.hstack((H_vec, P_vec))
+    
+    PP_vec = make_input_vec(table_config)
     
     # get properties
     if library_flag == "refprop":
-        DATA, herr = loop_REFPROP(parameters["material"], parameters["composition"], "HP", "T;D;E;S;Qmass", HP_vec)
+        DATA, herr = loop_REFPROP(parameters["material"], parameters["composition"], "HP", "T;D;E;S;Qmass", PP_vec)
 
     elif library_flag == "coolprop":
-        DATA = loop_COOLPROP(parameters["material"], parameters["method"], "HP", "T;D;E;S;Qmass", HP_vec)
+        DATA = loop_COOLPROP(parameters["material"], parameters["method"], "HP", "T;D;E;S;Qmass", PP_vec)
+        
+        # fix Q
         Tcrit, Pcrit, hcrit, Dcrit, Ecrit = get_crit_COOLPROP(parameters["material"], parameters["method"])
-
         DATA[np.bitwise_and(HP_vec[:,0] > hcrit, HP_vec[:,1] > Pcrit), 4] = 1.0
         Q_grid = np.clip(DATA[:,4].reshape((szH,szP)), 0, 1)
         Q_grid[:,1:][np.logical_or.accumulate(np.bitwise_and(Q_grid[:,:-1] > 0.0, Q_grid[:,1:] <= 0.0), axis=1)] = 1.0

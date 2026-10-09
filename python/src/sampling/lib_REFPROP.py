@@ -4,8 +4,7 @@ from collections import OrderedDict
 import time
 import os
 
-def loop_REFPROP(material, composition, PROP_IN, PROP_OUT, input_values):
-    # initialize refprop
+def init_refprop_dl(PROP_IN, PROP_OUT):
     RP = REFPROPFunctionLibrary(os.environ['RPPREFIX'])
     MASS_BASE_SI = RP.GETENUMdll(0,"MASS BASE SI").iEnum
     
@@ -14,13 +13,18 @@ def loop_REFPROP(material, composition, PROP_IN, PROP_OUT, input_values):
     N = len(PROP_OUT_UNIQUE_NO_Q.replace(";", ""))
     Qflag = ("Qmass" in PROP_OUT)
     
+    return RP, MASS_BASE_SI, PROP_IN, PROP_OUT, Qflag
+
+def loop_REFPROP(material, composition, PROP_IN, PROP_OUT, input_values):
+    RP, MASS_BASE_SI, PROP_IN, PROP_OUT, Qflag = init_refprop_dl(PROP_IN, PROP_OUT)
+    
     data_and_herr = [loop_call_REFPROP(material, composition, PROP_IN, PROP_OUT, p1xi, p2xi, N, Qflag, RP, MASS_BASE_SI) for p1xi, p2xi in input_values]
     
     M = len(data_and_herr)
     data = np.stack([data_and_herr[i][0] for i in range(M)], axis=0)
     herr = np.stack([data_and_herr[i][1] for i in range(M)], axis=0)
     
-    return data, herr
+    return data
         
 def loop_call_REFPROP(material, composition, PROP_IN, PROP_OUT, p1xi, p2xi, N, Qflag, RP, MASS_BASE_SI):
     out = RP.REFPROPdll(material, PROP_IN, PROP_OUT, MASS_BASE_SI,MASS_BASE_SI,0, p1xi,p2xi, composition)
@@ -30,7 +34,7 @@ def loop_call_REFPROP(material, composition, PROP_IN, PROP_OUT, p1xi, p2xi, N, Q
     else:
         data = out.Output[0:N]
         
-    return data, out.herr
+    return data
 
 def call_REFPROP(material, composition, PROP_IN, PROP_OUT, p1xi, p2xi, N, Qflag):
     # initialize refprop
@@ -44,7 +48,7 @@ def call_REFPROP(material, composition, PROP_IN, PROP_OUT, p1xi, p2xi, N, Qflag)
     else:
         data = out.Output[0:N]
         
-    return data, out.herr
+    return data
 
 def loop_REFPROP_SAT(material, composition, PROP_IN, PROP_OUT, input_value, Q):
     input_values = np.vstack((input_value, Q*np.ones(input_value.shape))).T

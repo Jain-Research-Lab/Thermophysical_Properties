@@ -1,42 +1,40 @@
 from DOA.config.lib_config import numpy as np
 from CoolProp.CoolProp import AbstractState
-from collections import OrderedDict
+# from collections import OrderedDict
 import CoolProp
 import time
 
-def loop_COOLPROP(material, method, PROP_IN, PROP_OUT, input_values):
-    # initialize coolprop
+def get_prop_str_short(PROP_STR):
+    prop_map = {"Qmass": "Q", "Hmass": "H", "Dmass": "D", 
+                "Emass": "U", "Umass": "U", "Smass": "S"}
+
+    return "".join(prop_map.get(p.strip(), p.strip()) for p in PROP_STR)
+
+def init_coolprop_as(material, method, PROP_IN_LST, PROP_OUT_LST):
     AS = AbstractState(method, material)
     
-    PROP_OUT_NO_Q = PROP_OUT.replace("Qmass", "Q")
-    PROP_OUT_UNIQUE_NO_Q = "".join(OrderedDict.fromkeys(PROP_OUT_NO_Q))
-    N = len(PROP_OUT_UNIQUE_NO_Q.replace(";", ""))
+    prop_map = {"Qmass": "Q", "H": "Hmass", "D": "Dmass", 
+                "E": "Umass", "U": "Umass", "S": "Smass"}
     
-    prop_in = PROP_IN.replace("H", "Hmass").replace("D", "Dmass").replace("E", "Umass").replace("S", "Smass") + "_INPUTS"
-    PROP_IN = getattr(CoolProp, prop_in)
-    PROP_OUT = PROP_OUT_NO_Q.replace("H", "Hmass").replace("D", "Dmass").replace("E", "Umass").replace("S", "Smass").split(";")
-    PROP_OUT = [getattr(CoolProp, "i"+i) for i in PROP_OUT]
-
-    return np.array([loop_call_COOLPROP(PROP_IN, PROP_OUT, p1xi, p2xi, AS) for p1xi, p2xi in input_values])
+    PROP_IN_STR = "".join(prop_map.get(p.strip(), p.strip()) for p in PROP_IN_LST)
+    PROP_OUT_STR = tuple(prop_map.get(p.strip(), p.strip()) for p in PROP_OUT_LST)
+    
+    PROP_IN = getattr(CoolProp, PROP_IN_STR + "_INPUTS")
+    PROP_OUT = tuple(getattr(CoolProp, "i"+i) for i in PROP_OUT_STR)
+    
+    return AS, PROP_IN, PROP_OUT
+    
+def loop_COOLPROP(material, method, PROP_IN, PROP_OUT, input_values):
+    AS, PROP_IN, PROP_OUT = init_coolprop_as(material, method, PROP_IN, PROP_OUT)
+    return np.array([loop_call_COOLPROP(AS, PROP_IN, PROP_OUT, p1xi, p2xi) for p1xi, p2xi in input_values])
                 
-def loop_call_COOLPROP(PROP_IN, PROP_OUT, p1xi, p2xi, AS):
+def loop_call_COOLPROP(AS, PROP_IN, PROP_OUT, p1xi, p2xi):
     AS.update(PROP_IN, p1xi, p2xi)
     return np.array([AS.keyed_output(i) for i in PROP_OUT])
 
 def call_COOLPROP(material, method, PROP_IN, PROP_OUT, p1xi, p2xi):
-    # initialize coolprop
-    AS = AbstractState(method, material)
-    AS.update(CoolProp.get_input_pair_index(PROP_IN), p1xi, p2xi)
-
-    PROP_OUT_NO_Q = PROP_OUT.replace("Qmass", "Q")
-    PROP_OUT_UNIQUE_NO_Q = "".join(OrderedDict.fromkeys(PROP_OUT_NO_Q))
-    N = len(PROP_OUT_UNIQUE_NO_Q.replace(";", ""))
-    
-    prop_in = PROP_IN.replace("H", "Hmass").replace("D", "Dmass").replace("E", "Umass").replace("S", "Smass") + "_INPUTS"
-    PROP_IN = getattr(CoolProp, prop_in)
-    PROP_OUT = PROP_OUT_NO_Q.replace("H", "Hmass").replace("D", "Dmass").replace("E", "Umass").replace("S", "Smass").split(";")
-    PROP_OUT = [getattr(CoolProp, "i"+i) for i in PROP_OUT]
-
+    AS, PROP_IN, PROP_OUT = init_coolprop_as(material, method, PROP_IN, PROP_OUT)
+    AS.update(PROP_IN, p1xi, p2xi)
     return np.array([AS.keyed_output(i) for i in PROP_OUT])
 
 def loop_COOLPROP_SAT(material, COOLPROP_method, PROP_IN, PROP_OUT, input_value, Q):

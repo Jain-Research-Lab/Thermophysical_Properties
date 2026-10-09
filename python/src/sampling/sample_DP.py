@@ -31,9 +31,10 @@ def get_DP_GRID(DP_table_config, library_flag, parameters):
 
     elif library_flag == "coolprop":
         DATA = loop_COOLPROP(parameters["material"], parameters["method"], "DP", "T;H;E;S;Q", np.hstack((D_vec, P_vec)))
+        
+        # fix Q
         Tcrit, Pcrit, hcrit, Dcrit, Ecrit = get_crit_COOLPROP(parameters["material"], parameters["method"])   
         DATA[np.bitwise_and(DATA[:,1] > hcrit, DP_vec[:,1] > Pcrit), 4] = 1.0
-
         Q_grid = np.fliplr(np.clip(DATA[:,4].reshape((szD,szP)), 0, 1))
         Q_grid[:,1:][np.logical_or.accumulate(np.bitwise_and(Q_grid[:,:-1] > 0.0, Q_grid[:,1:] <= 0.0), axis=1)] = 1.0
         DATA[:,4] = np.fliplr(Q_grid).flatten()
