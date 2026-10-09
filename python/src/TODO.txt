@@ -1,0 +1,32 @@
+4. Plot partial derivatives of relevant property functions for AB, DP, HP
+5. abstract plotting where appropriate
+6. make cubic interpolation or ttse interpolation
+7. optimize bilinear interpolation to use gather for 2x2 window access
+8. change array indexing so that largest index is first
+9. check that all tests (0d, 1d, Nd) have same result. ie, do the same compute using all 3 functions, then check.
+that way, only need to check one result against ground truth, and if all others match, then you're done!
+10. add option to disable property, and just do partial
+11. figure out why jax inversion is -7, but python is -15
+
+# save files with consistent naming convension - rename everywhere & change in HP/DP as well as this script
+# see if property function can all be unified, so mostly requiring changes to AB sampling
+Make a single script that generates all property data for a given property
+# fix LUT analysis to be only AB/HP, make figure out AB3&AB5 first
+# example usage of refprop & coolprop and any other fuction
+# update testing scripts, ensure they function
+# figure out what to do with AB3 and AB5
+# update saturated phase & single phase
+# potentially remove bicubic from LUTs
+# allow non-square sampling
+
+# finish rebuttal
+# 1page thing, student aid, airplane tickets
+# fix accuracy.py in lut_analysis
+# clean up HX_1p_2p counter flow with only good varients - AB, dABM, B
+# fix sim eval scripts
+# mark changes to comments
+# look at figures and such from editor commens, address editor comments
+# revise algorithm figures
+# double check that citation for preserving linear invariants is correct
+
+# black box model implementation

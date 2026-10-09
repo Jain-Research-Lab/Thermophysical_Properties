@@ -1,0 +1,432 @@
+HloModule jit_f, is_scheduled=true, entry_computation_layout={(f64[400,10]{1,0}, f64[400,10]{1,0})->f64[400,10]{1,0}}, allow_spmd_sharding_propagation_to_parameters={true,true}, allow_spmd_sharding_propagation_to_output={true}
+
+FileNames
+1 "c:\\Users\\dgulewic\\Documents\\graph_modeling_toolbox\\DOA\\modular_functions\\material_properties\\testing\\test_AB_code.py"
+2 "C:\\Users\\dgulewic\\Documents\\graph_modeling_toolbox\\DOA\\general_functions\\python_jax_equivalents\\vmap.py"
+3 "C:\\Users\\dgulewic\\Documents\\graph_modeling_toolbox\\DOA\\general_functions\\mathGBM\\interp2d.py"
+
+FunctionNames
+1 "<module>"
+2 "vmap.f"
+3 "interp2d_bilinear.f_source"
+4 "interp2d_bilinear.f_source_1d"
+5 "interp2d_bilinear.bilinear_Dq_cq"
+
+FileLocations
+1 {file_name_id=1 function_name_id=1 line=27 end_line=27 column=17 end_column=43}
+2 {file_name_id=2 function_name_id=2 line=25 end_line=25 column=23 end_column=71}
+3 {file_name_id=3 function_name_id=3 line=19 end_line=19 column=15 end_column=73}
+4 {file_name_id=3 function_name_id=4 line=34 end_line=34 column=21 end_column=88}
+5 {file_name_id=3 function_name_id=5 line=47 end_line=47 column=29 end_column=34}
+6 {file_name_id=3 function_name_id=5 line=47 end_line=47 column=41 end_column=49}
+7 {file_name_id=3 function_name_id=5 line=47 end_line=47 column=36 end_column=49}
+8 {file_name_id=3 function_name_id=5 line=47 end_line=47 column=55 end_column=64}
+9 {file_name_id=3 function_name_id=5 line=47 end_line=47 column=21 end_column=65}
+10 {file_name_id=3 function_name_id=5 line=48 end_line=48 column=29 end_column=34}
+11 {file_name_id=3 function_name_id=5 line=48 end_line=48 column=41 end_column=49}
+12 {file_name_id=3 function_name_id=5 line=48 end_line=48 column=36 end_column=49}
+13 {file_name_id=3 function_name_id=5 line=48 end_line=48 column=55 end_column=64}
+14 {file_name_id=3 function_name_id=5 line=48 end_line=48 column=21 end_column=65}
+15 {file_name_id=3 function_name_id=5 line=50 end_line=50 column=17 end_column=37}
+16 {file_name_id=3 function_name_id=5 line=51 end_line=51 column=17 end_column=37}
+17 {file_name_id=3 function_name_id=5 line=53 end_line=53 column=44 end_column=52}
+18 {file_name_id=3 function_name_id=5 line=53 end_line=53 column=54 end_column=62}
+19 {file_name_id=3 function_name_id=5 line=53 end_line=53 column=18 end_column=72}
+20 {file_name_id=3 function_name_id=5 line=54 end_line=54 column=36 end_column=44}
+21 {file_name_id=3 function_name_id=5 line=54 end_line=54 column=54 end_column=62}
+22 {file_name_id=3 function_name_id=5 line=54 end_line=54 column=18 end_column=72}
+23 {file_name_id=3 function_name_id=5 line=57 end_line=57 column=13 end_column=39}
+24 {file_name_id=3 function_name_id=5 line=60 end_line=60 column=14 end_column=26}
+25 {file_name_id=3 function_name_id=5 line=61 end_line=61 column=14 end_column=31}
+26 {file_name_id=3 function_name_id=5 line=62 end_line=62 column=14 end_column=26}
+27 {file_name_id=3 function_name_id=5 line=63 end_line=63 column=14 end_column=31}
+28 {file_name_id=3 function_name_id=5 line=65 end_line=65 column=23 end_column=30}
+29 {file_name_id=3 function_name_id=5 line=65 end_line=65 column=32 end_column=39}
+30 {file_name_id=3 function_name_id=5 line=65 end_line=65 column=41 end_column=48}
+31 {file_name_id=3 function_name_id=5 line=65 end_line=65 column=50 end_column=57}
+32 {file_name_id=3 function_name_id=5 line=65 end_line=65 column=13 end_column=67}
+33 {file_name_id=3 function_name_id=4 line=35 end_line=35 column=30 end_column=61}
+
+StackFrames
+1 {file_location_id=1 parent_frame_id=1}
+2 {file_location_id=2 parent_frame_id=2}
+3 {file_location_id=3 parent_frame_id=3}
+4 {file_location_id=4 parent_frame_id=4}
+5 {file_location_id=5 parent_frame_id=5}
+6 {file_location_id=6 parent_frame_id=5}
+7 {file_location_id=7 parent_frame_id=5}
+8 {file_location_id=8 parent_frame_id=5}
+9 {file_location_id=9 parent_frame_id=5}
+10 {file_location_id=10 parent_frame_id=5}
+11 {file_location_id=11 parent_frame_id=5}
+12 {file_location_id=12 parent_frame_id=5}
+13 {file_location_id=13 parent_frame_id=5}
+14 {file_location_id=14 parent_frame_id=5}
+15 {file_location_id=15 parent_frame_id=5}
+16 {file_location_id=16 parent_frame_id=5}
+17 {file_location_id=17 parent_frame_id=5}
+18 {file_location_id=18 parent_frame_id=5}
+19 {file_location_id=19 parent_frame_id=5}
+20 {file_location_id=20 parent_frame_id=5}
+21 {file_location_id=21 parent_frame_id=5}
+22 {file_location_id=22 parent_frame_id=5}
+23 {file_location_id=23 parent_frame_id=5}
+24 {file_location_id=24 parent_frame_id=5}
+25 {file_location_id=25 parent_frame_id=5}
+26 {file_location_id=26 parent_frame_id=5}
+27 {file_location_id=27 parent_frame_id=5}
+28 {file_location_id=28 parent_frame_id=5}
+29 {file_location_id=29 parent_frame_id=5}
+30 {file_location_id=30 parent_frame_id=5}
+31 {file_location_id=31 parent_frame_id=5}
+32 {file_location_id=32 parent_frame_id=5}
+33 {file_location_id=33 parent_frame_id=4}
+
+
+%fused_computation (param_0.5: f64[1,400,400], param_1.3: s64[400,4,10], param_2.7: s64[400,4,10]) -> f64[400,10,4] {
+  %param_0.5 = f64[1,400,400]{2,1,0} parameter(0)
+  %param_2.7 = s64[400,4,10]{2,1,0} parameter(2)
+  %constant.30 = s64[] constant(0), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %broadcast.40 = s64[400,4,10]{2,1,0} broadcast(%constant.30), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %lt.7 = pred[400,4,10]{2,1,0} compare(%param_2.7, %broadcast.40), direction=LT, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/lt" stack_frame_id=23}
+  %constant.29 = s64[] constant(400), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %broadcast.39 = s64[400,4,10]{2,1,0} broadcast(%constant.29), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %add.27 = s64[400,4,10]{2,1,0} add(%param_2.7, %broadcast.39), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=23}
+  %select_n.7 = s64[400,4,10]{2,1,0} select(%lt.7, %add.27, %param_2.7), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/select_n" stack_frame_id=23}
+  %convert_element_type.41 = s32[400,4,10]{2,1,0} convert(%select_n.7), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=23}
+  %bitcast.17 = s32[400,4,10,1]{3,2,1,0} bitcast(%convert_element_type.41), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=23}
+  %param_1.3 = s64[400,4,10]{2,1,0} parameter(1)
+  %lt.6 = pred[400,4,10]{2,1,0} compare(%param_1.3, %broadcast.40), direction=LT, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/lt" stack_frame_id=23}
+  %add.26 = s64[400,4,10]{2,1,0} add(%param_1.3, %broadcast.39), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=23}
+  %select_n.6 = s64[400,4,10]{2,1,0} select(%lt.6, %add.26, %param_1.3), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/select_n" stack_frame_id=23}
+  %convert_element_type.40 = s32[400,4,10]{2,1,0} convert(%select_n.6), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=23}
+  %bitcast.16 = s32[400,4,10,1]{3,2,1,0} bitcast(%convert_element_type.40), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=23}
+  %concatenate.12 = s32[400,4,10,2]{3,2,1,0} concatenate(%bitcast.17, %bitcast.16), dimensions={3}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=23}
+  %bitcast.15 = s32[16000,2]{1,0} bitcast(%concatenate.12), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=23}
+  %gather.4 = f64[16000,1,1,1]{3,2,1,0} gather(%param_0.5, %bitcast.15), offset_dims={1,2,3}, collapsed_slice_dims={}, start_index_map={1,2}, index_vector_dim=1, slice_sizes={1,1,1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+  %bitcast.14 = f64[400,1,4,10]{3,2,0,1} bitcast(%gather.4), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+  %copy.4 = f64[400,1,4,10]{3,2,1,0} copy(%bitcast.14), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+  %transpose.10 = f64[400,10,4,1]{1,2,3,0} transpose(%copy.4), dimensions={0,3,2,1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+  %copy.3 = f64[400,10,4,1]{3,2,1,0} copy(%transpose.10), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+  ROOT %bitcast.13 = f64[400,10,4]{2,1,0} bitcast(%copy.3), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+}
+
+%fused_computation.1 (param_0.11: f64[400,10]) -> s64[400,4,10] {
+  %constant.35 = f64[] constant(0), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %max.16 = f64[400,10]{1,0} broadcast(%constant.35), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/max" stack_frame_id=9}
+  %constant.34 = f64[] constant(1.995), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %mul.25 = f64[400,10]{1,0} broadcast(%constant.34), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=5}
+  %param_0.11 = f64[400,10]{1,0} parameter(0)
+  %constant.33 = f64[] constant(-200), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %broadcast.42 = f64[400,10]{1,0} broadcast(%constant.33), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %add.29 = f64[400,10]{1,0} add(%param_0.11, %broadcast.42), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=12}
+  %mul.24 = f64[400,10]{1,0} multiply(%mul.25, %add.29), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=10}
+  %constant.32 = f64[] constant(398), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %min.16 = f64[400,10]{1,0} broadcast(%constant.32), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %clamp.2 = f64[400,10]{1,0} clamp(%max.16, %mul.24, %min.16), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %floor.6 = f64[400,10]{1,0} floor(%clamp.2), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/floor" stack_frame_id=16}
+  %convert_element_type.42 = s64[400,10]{1,0} convert(%floor.6), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=16}
+  %bitcast.19 = s64[400,1,10]{2,1,0} bitcast(%convert_element_type.42), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=16}
+  %constant.31 = s64[] constant(1), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %broadcast.41 = s64[400,10]{1,0} broadcast(%constant.31), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %add.28 = s64[400,10]{1,0} add(%convert_element_type.42, %broadcast.41), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=20}
+  %bitcast.18 = s64[400,1,10]{2,1,0} bitcast(%add.28), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=20}
+  ROOT %concatenate.13 = s64[400,4,10]{2,1,0} concatenate(%bitcast.19, %bitcast.18, %bitcast.19, %bitcast.18), dimensions={1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=22}
+}
+
+%fused_computation.2 (param_0.17: f64[400,10]) -> s64[400,4,10] {
+  %constant.40 = f64[] constant(0), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %max.17 = f64[400,10]{1,0} broadcast(%constant.40), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/max" stack_frame_id=9}
+  %constant.39 = f64[] constant(1.995), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %mul.27 = f64[400,10]{1,0} broadcast(%constant.39), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=5}
+  %param_0.17 = f64[400,10]{1,0} parameter(0)
+  %constant.38 = f64[] constant(-200), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %broadcast.44 = f64[400,10]{1,0} broadcast(%constant.38), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %add.31 = f64[400,10]{1,0} add(%param_0.17, %broadcast.44), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=7}
+  %mul.26 = f64[400,10]{1,0} multiply(%mul.27, %add.31), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=5}
+  %constant.37 = f64[] constant(398), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %min.17 = f64[400,10]{1,0} broadcast(%constant.37), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %clamp.3 = f64[400,10]{1,0} clamp(%max.17, %mul.26, %min.17), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %floor.7 = f64[400,10]{1,0} floor(%clamp.3), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/floor" stack_frame_id=15}
+  %convert_element_type.43 = s64[400,10]{1,0} convert(%floor.7), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=15}
+  %bitcast.21 = s64[400,1,10]{2,1,0} bitcast(%convert_element_type.43), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=15}
+  %constant.36 = s64[] constant(1), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %broadcast.43 = s64[400,10]{1,0} broadcast(%constant.36), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %add.30 = s64[400,10]{1,0} add(%convert_element_type.43, %broadcast.43), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=17}
+  %bitcast.20 = s64[400,1,10]{2,1,0} bitcast(%add.30), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=17}
+  ROOT %concatenate.14 = s64[400,4,10]{2,1,0} concatenate(%bitcast.21, %bitcast.21, %bitcast.20, %bitcast.20), dimensions={1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=19}
+}
+
+%fused_computation.3 (param_0.24: f64[400,10], param_1.29: f64[400,10]) -> f64[400,10,4] {
+  %constant.45 = f64[] constant(1), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %broadcast.46 = f64[400,10]{1,0} broadcast(%constant.45), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %constant.44 = f64[] constant(0), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %max.18 = f64[400,10]{1,0} broadcast(%constant.44), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/max" stack_frame_id=9}
+  %constant.43 = f64[] constant(1.995), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %mul.34 = f64[400,10]{1,0} broadcast(%constant.43), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=5}
+  %param_1.29 = f64[400,10]{1,0} parameter(1)
+  %constant.42 = f64[] constant(-200), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %broadcast.45 = f64[400,10]{1,0} broadcast(%constant.42), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %add.35 = f64[400,10]{1,0} add(%param_1.29, %broadcast.45), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=7}
+  %mul.33 = f64[400,10]{1,0} multiply(%mul.34, %add.35), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=5}
+  %constant.41 = f64[] constant(398), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %min.18 = f64[400,10]{1,0} broadcast(%constant.41), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %clamp.5 = f64[400,10]{1,0} clamp(%max.18, %mul.33, %min.18), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %sub.27 = f64[400,10]{1,0} subtract(%broadcast.46, %clamp.5), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=24}
+  %floor.9 = f64[400,10]{1,0} floor(%clamp.5), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/floor" stack_frame_id=15}
+  %convert_element_type.47 = s64[400,10]{1,0} convert(%floor.9), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=15}
+  %convert_element_type.46 = f64[400,10]{1,0} convert(%convert_element_type.47), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=24}
+  %add.34 = f64[400,10]{1,0} add(%sub.27, %convert_element_type.46), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=24}
+  %param_0.24 = f64[400,10]{1,0} parameter(0)
+  %add.33 = f64[400,10]{1,0} add(%param_0.24, %broadcast.45), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=12}
+  %mul.32 = f64[400,10]{1,0} multiply(%mul.34, %add.33), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=10}
+  %clamp.4 = f64[400,10]{1,0} clamp(%max.18, %mul.32, %min.18), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %sub.26 = f64[400,10]{1,0} subtract(%broadcast.46, %clamp.4), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=26}
+  %floor.8 = f64[400,10]{1,0} floor(%clamp.4), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/floor" stack_frame_id=16}
+  %convert_element_type.45 = s64[400,10]{1,0} convert(%floor.8), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=16}
+  %convert_element_type.44 = f64[400,10]{1,0} convert(%convert_element_type.45), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=26}
+  %add.32 = f64[400,10]{1,0} add(%sub.26, %convert_element_type.44), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=26}
+  %mul.31 = f64[400,10]{1,0} multiply(%add.34, %add.32), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=28}
+  %bitcast.25 = f64[400,1,10]{2,1,0} bitcast(%mul.31), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=28}
+  %sub.25 = f64[400,10]{1,0} subtract(%clamp.4, %convert_element_type.44), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=27}
+  %mul.30 = f64[400,10]{1,0} multiply(%add.34, %sub.25), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=29}
+  %bitcast.24 = f64[400,1,10]{2,1,0} bitcast(%mul.30), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=29}
+  %sub.24 = f64[400,10]{1,0} subtract(%clamp.5, %convert_element_type.46), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=25}
+  %mul.29 = f64[400,10]{1,0} multiply(%sub.24, %add.32), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=30}
+  %bitcast.23 = f64[400,1,10]{2,1,0} bitcast(%mul.29), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=30}
+  %mul.28 = f64[400,10]{1,0} multiply(%sub.24, %sub.25), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=31}
+  %bitcast.22 = f64[400,1,10]{2,1,0} bitcast(%mul.28), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=31}
+  %concatenate.15 = f64[400,4,10]{2,1,0} concatenate(%bitcast.25, %bitcast.24, %bitcast.23, %bitcast.22), dimensions={1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=32}
+  %transpose.11 = f64[400,10,4]{1,2,0} transpose(%concatenate.15), dimensions={0,2,1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=32}
+  ROOT %copy.5 = f64[400,10,4]{2,1,0} copy(%transpose.11), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=32}
+}
+
+ENTRY %main.4 (data_0__0_.1: f64[400,10], data_0__1_.1: f64[400,10]) -> f64[400,10] {
+  %data_0__0_.1 = f64[400,10]{1,0} parameter(0), metadata={op_name="data[0][0]"}
+  %data_0__1_.1 = f64[400,10]{1,0} parameter(1), metadata={op_name="data[0][1]"}
+  %constant.19 = f64[1,400,400]{2,1,0} constant({...}), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %bitcast_concatenate_fusion.1 = s64[400,4,10]{2,1,0} fusion(%data_0__0_.1), kind=kLoop, calls=%fused_computation.2, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=19}
+  %transpose_copy_fusion = f64[400,10,4]{2,1,0} fusion(%data_0__1_.1, %data_0__0_.1), kind=kLoop, calls=%fused_computation.3, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=32}
+  %bitcast_concatenate_fusion = s64[400,4,10]{2,1,0} fusion(%data_0__1_.1), kind=kLoop, calls=%fused_computation.1, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=22}
+  %copy_bitcast_fusion = f64[400,10,4]{2,1,0} fusion(%constant.19, %bitcast_concatenate_fusion, %bitcast_concatenate_fusion.1), kind=kLoop, calls=%fused_computation, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}, backend_config={"outer_dimension_partitions":["5"]}
+  ROOT %dot.2 = f64[400,10]{1,0} dot(%transpose_copy_fusion, %copy_bitcast_fusion), lhs_batch_dims={0,1}, lhs_contracting_dims={2}, rhs_batch_dims={0,1}, rhs_contracting_dims={2}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/kji,ji->ki/dot_general" stack_frame_id=33}
+}
+
+
+
+================================================================================
+
+HloModule jit_f, is_scheduled=true, entry_computation_layout={(f64[400,10]{1,0}, f64[400,10]{1,0})->f64[400,10]{1,0}}, allow_spmd_sharding_propagation_to_parameters={true,true}, allow_spmd_sharding_propagation_to_output={true}
+
+FileNames
+1 "c:\\Users\\dgulewic\\Documents\\graph_modeling_toolbox\\DOA\\modular_functions\\material_properties\\testing\\test_AB_code.py"
+2 "C:\\Users\\dgulewic\\Documents\\graph_modeling_toolbox\\DOA\\general_functions\\python_jax_equivalents\\vmap.py"
+3 "C:\\Users\\dgulewic\\Documents\\graph_modeling_toolbox\\DOA\\general_functions\\mathGBM\\interp2d.py"
+
+FunctionNames
+1 "<module>"
+2 "vmap.f"
+3 "interp2d_bilinear.f_source"
+4 "interp2d_bilinear.f_source_1d"
+5 "interp2d_bilinear.bilinear_Dq_cq"
+
+FileLocations
+1 {file_name_id=1 function_name_id=1 line=27 end_line=27 column=17 end_column=43}
+2 {file_name_id=2 function_name_id=2 line=25 end_line=25 column=23 end_column=71}
+3 {file_name_id=3 function_name_id=3 line=19 end_line=19 column=15 end_column=73}
+4 {file_name_id=3 function_name_id=4 line=34 end_line=34 column=21 end_column=88}
+5 {file_name_id=3 function_name_id=5 line=47 end_line=47 column=29 end_column=34}
+6 {file_name_id=3 function_name_id=5 line=47 end_line=47 column=41 end_column=49}
+7 {file_name_id=3 function_name_id=5 line=47 end_line=47 column=36 end_column=49}
+8 {file_name_id=3 function_name_id=5 line=47 end_line=47 column=55 end_column=64}
+9 {file_name_id=3 function_name_id=5 line=47 end_line=47 column=21 end_column=65}
+10 {file_name_id=3 function_name_id=5 line=48 end_line=48 column=29 end_column=34}
+11 {file_name_id=3 function_name_id=5 line=48 end_line=48 column=41 end_column=49}
+12 {file_name_id=3 function_name_id=5 line=48 end_line=48 column=36 end_column=49}
+13 {file_name_id=3 function_name_id=5 line=48 end_line=48 column=55 end_column=64}
+14 {file_name_id=3 function_name_id=5 line=48 end_line=48 column=21 end_column=65}
+15 {file_name_id=3 function_name_id=5 line=50 end_line=50 column=17 end_column=37}
+16 {file_name_id=3 function_name_id=5 line=51 end_line=51 column=17 end_column=37}
+17 {file_name_id=3 function_name_id=5 line=53 end_line=53 column=44 end_column=52}
+18 {file_name_id=3 function_name_id=5 line=53 end_line=53 column=54 end_column=62}
+19 {file_name_id=3 function_name_id=5 line=53 end_line=53 column=18 end_column=72}
+20 {file_name_id=3 function_name_id=5 line=54 end_line=54 column=36 end_column=44}
+21 {file_name_id=3 function_name_id=5 line=54 end_line=54 column=54 end_column=62}
+22 {file_name_id=3 function_name_id=5 line=54 end_line=54 column=18 end_column=72}
+23 {file_name_id=3 function_name_id=5 line=57 end_line=57 column=13 end_column=39}
+24 {file_name_id=3 function_name_id=5 line=60 end_line=60 column=14 end_column=26}
+25 {file_name_id=3 function_name_id=5 line=61 end_line=61 column=14 end_column=31}
+26 {file_name_id=3 function_name_id=5 line=62 end_line=62 column=14 end_column=26}
+27 {file_name_id=3 function_name_id=5 line=63 end_line=63 column=14 end_column=31}
+28 {file_name_id=3 function_name_id=5 line=65 end_line=65 column=23 end_column=30}
+29 {file_name_id=3 function_name_id=5 line=65 end_line=65 column=32 end_column=39}
+30 {file_name_id=3 function_name_id=5 line=65 end_line=65 column=41 end_column=48}
+31 {file_name_id=3 function_name_id=5 line=65 end_line=65 column=50 end_column=57}
+32 {file_name_id=3 function_name_id=5 line=65 end_line=65 column=13 end_column=67}
+33 {file_name_id=3 function_name_id=4 line=35 end_line=35 column=30 end_column=61}
+
+StackFrames
+1 {file_location_id=1 parent_frame_id=1}
+2 {file_location_id=2 parent_frame_id=2}
+3 {file_location_id=3 parent_frame_id=3}
+4 {file_location_id=4 parent_frame_id=4}
+5 {file_location_id=5 parent_frame_id=5}
+6 {file_location_id=6 parent_frame_id=5}
+7 {file_location_id=7 parent_frame_id=5}
+8 {file_location_id=8 parent_frame_id=5}
+9 {file_location_id=9 parent_frame_id=5}
+10 {file_location_id=10 parent_frame_id=5}
+11 {file_location_id=11 parent_frame_id=5}
+12 {file_location_id=12 parent_frame_id=5}
+13 {file_location_id=13 parent_frame_id=5}
+14 {file_location_id=14 parent_frame_id=5}
+15 {file_location_id=15 parent_frame_id=5}
+16 {file_location_id=16 parent_frame_id=5}
+17 {file_location_id=17 parent_frame_id=5}
+18 {file_location_id=18 parent_frame_id=5}
+19 {file_location_id=19 parent_frame_id=5}
+20 {file_location_id=20 parent_frame_id=5}
+21 {file_location_id=21 parent_frame_id=5}
+22 {file_location_id=22 parent_frame_id=5}
+23 {file_location_id=23 parent_frame_id=5}
+24 {file_location_id=24 parent_frame_id=5}
+25 {file_location_id=25 parent_frame_id=5}
+26 {file_location_id=26 parent_frame_id=5}
+27 {file_location_id=27 parent_frame_id=5}
+28 {file_location_id=28 parent_frame_id=5}
+29 {file_location_id=29 parent_frame_id=5}
+30 {file_location_id=30 parent_frame_id=5}
+31 {file_location_id=31 parent_frame_id=5}
+32 {file_location_id=32 parent_frame_id=5}
+33 {file_location_id=33 parent_frame_id=4}
+
+
+%fused_computation (param_0.5: f64[1,400,400], param_1.3: s64[400,4,10], param_2.7: s64[400,4,10]) -> f64[400,10,4] {
+  %param_0.5 = f64[1,400,400]{2,1,0} parameter(0)
+  %param_2.7 = s64[400,4,10]{2,1,0} parameter(2)
+  %constant.30 = s64[] constant(0), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %broadcast.40 = s64[400,4,10]{2,1,0} broadcast(%constant.30), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %lt.7 = pred[400,4,10]{2,1,0} compare(%param_2.7, %broadcast.40), direction=LT, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/lt" stack_frame_id=23}
+  %constant.29 = s64[] constant(400), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %broadcast.39 = s64[400,4,10]{2,1,0} broadcast(%constant.29), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %add.27 = s64[400,4,10]{2,1,0} add(%param_2.7, %broadcast.39), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=23}
+  %select_n.7 = s64[400,4,10]{2,1,0} select(%lt.7, %add.27, %param_2.7), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/select_n" stack_frame_id=23}
+  %convert_element_type.41 = s32[400,4,10]{2,1,0} convert(%select_n.7), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=23}
+  %bitcast.17 = s32[400,4,10,1]{3,2,1,0} bitcast(%convert_element_type.41), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=23}
+  %param_1.3 = s64[400,4,10]{2,1,0} parameter(1)
+  %lt.6 = pred[400,4,10]{2,1,0} compare(%param_1.3, %broadcast.40), direction=LT, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/lt" stack_frame_id=23}
+  %add.26 = s64[400,4,10]{2,1,0} add(%param_1.3, %broadcast.39), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=23}
+  %select_n.6 = s64[400,4,10]{2,1,0} select(%lt.6, %add.26, %param_1.3), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/select_n" stack_frame_id=23}
+  %convert_element_type.40 = s32[400,4,10]{2,1,0} convert(%select_n.6), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=23}
+  %bitcast.16 = s32[400,4,10,1]{3,2,1,0} bitcast(%convert_element_type.40), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=23}
+  %concatenate.12 = s32[400,4,10,2]{3,2,1,0} concatenate(%bitcast.17, %bitcast.16), dimensions={3}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=23}
+  %bitcast.15 = s32[16000,2]{1,0} bitcast(%concatenate.12), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=23}
+  %gather.4 = f64[16000,1,1,1]{3,2,1,0} gather(%param_0.5, %bitcast.15), offset_dims={1,2,3}, collapsed_slice_dims={}, start_index_map={1,2}, index_vector_dim=1, slice_sizes={1,1,1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+  %bitcast.14 = f64[400,1,4,10]{3,2,0,1} bitcast(%gather.4), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+  %copy.4 = f64[400,1,4,10]{3,2,1,0} copy(%bitcast.14), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+  %transpose.10 = f64[400,10,4,1]{1,2,3,0} transpose(%copy.4), dimensions={0,3,2,1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+  %copy.3 = f64[400,10,4,1]{3,2,1,0} copy(%transpose.10), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+  ROOT %bitcast.13 = f64[400,10,4]{2,1,0} bitcast(%copy.3), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}
+}
+
+%fused_computation.1 (param_0.11: f64[400,10]) -> s64[400,4,10] {
+  %constant.35 = f64[] constant(0), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %max.16 = f64[400,10]{1,0} broadcast(%constant.35), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/max" stack_frame_id=9}
+  %constant.34 = f64[] constant(1.995), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %mul.25 = f64[400,10]{1,0} broadcast(%constant.34), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=5}
+  %param_0.11 = f64[400,10]{1,0} parameter(0)
+  %constant.33 = f64[] constant(-200), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %broadcast.42 = f64[400,10]{1,0} broadcast(%constant.33), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %add.29 = f64[400,10]{1,0} add(%param_0.11, %broadcast.42), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=12}
+  %mul.24 = f64[400,10]{1,0} multiply(%mul.25, %add.29), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=10}
+  %constant.32 = f64[] constant(398), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %min.16 = f64[400,10]{1,0} broadcast(%constant.32), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %clamp.2 = f64[400,10]{1,0} clamp(%max.16, %mul.24, %min.16), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %floor.6 = f64[400,10]{1,0} floor(%clamp.2), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/floor" stack_frame_id=16}
+  %convert_element_type.42 = s64[400,10]{1,0} convert(%floor.6), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=16}
+  %bitcast.19 = s64[400,1,10]{2,1,0} bitcast(%convert_element_type.42), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=16}
+  %constant.31 = s64[] constant(1), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %broadcast.41 = s64[400,10]{1,0} broadcast(%constant.31), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %add.28 = s64[400,10]{1,0} add(%convert_element_type.42, %broadcast.41), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=20}
+  %bitcast.18 = s64[400,1,10]{2,1,0} bitcast(%add.28), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=20}
+  ROOT %concatenate.13 = s64[400,4,10]{2,1,0} concatenate(%bitcast.19, %bitcast.18, %bitcast.19, %bitcast.18), dimensions={1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=22}
+}
+
+%fused_computation.2 (param_0.17: f64[400,10]) -> s64[400,4,10] {
+  %constant.40 = f64[] constant(0), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %max.17 = f64[400,10]{1,0} broadcast(%constant.40), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/max" stack_frame_id=9}
+  %constant.39 = f64[] constant(1.995), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %mul.27 = f64[400,10]{1,0} broadcast(%constant.39), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=5}
+  %param_0.17 = f64[400,10]{1,0} parameter(0)
+  %constant.38 = f64[] constant(-200), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %broadcast.44 = f64[400,10]{1,0} broadcast(%constant.38), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %add.31 = f64[400,10]{1,0} add(%param_0.17, %broadcast.44), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=7}
+  %mul.26 = f64[400,10]{1,0} multiply(%mul.27, %add.31), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=5}
+  %constant.37 = f64[] constant(398), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %min.17 = f64[400,10]{1,0} broadcast(%constant.37), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %clamp.3 = f64[400,10]{1,0} clamp(%max.17, %mul.26, %min.17), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %floor.7 = f64[400,10]{1,0} floor(%clamp.3), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/floor" stack_frame_id=15}
+  %convert_element_type.43 = s64[400,10]{1,0} convert(%floor.7), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=15}
+  %bitcast.21 = s64[400,1,10]{2,1,0} bitcast(%convert_element_type.43), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=15}
+  %constant.36 = s64[] constant(1), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %broadcast.43 = s64[400,10]{1,0} broadcast(%constant.36), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %add.30 = s64[400,10]{1,0} add(%convert_element_type.43, %broadcast.43), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=17}
+  %bitcast.20 = s64[400,1,10]{2,1,0} bitcast(%add.30), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=17}
+  ROOT %concatenate.14 = s64[400,4,10]{2,1,0} concatenate(%bitcast.21, %bitcast.21, %bitcast.20, %bitcast.20), dimensions={1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=19}
+}
+
+%fused_computation.3 (param_0.24: f64[400,10], param_1.29: f64[400,10]) -> f64[400,10,4] {
+  %constant.45 = f64[] constant(1), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %broadcast.46 = f64[400,10]{1,0} broadcast(%constant.45), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)"}
+  %constant.44 = f64[] constant(0), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %max.18 = f64[400,10]{1,0} broadcast(%constant.44), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/max" stack_frame_id=9}
+  %constant.43 = f64[] constant(1.995), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %mul.34 = f64[400,10]{1,0} broadcast(%constant.43), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=5}
+  %param_1.29 = f64[400,10]{1,0} parameter(1)
+  %constant.42 = f64[] constant(-200), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %broadcast.45 = f64[400,10]{1,0} broadcast(%constant.42), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %add.35 = f64[400,10]{1,0} add(%param_1.29, %broadcast.45), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=7}
+  %mul.33 = f64[400,10]{1,0} multiply(%mul.34, %add.35), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=5}
+  %constant.41 = f64[] constant(398), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/convert_element_type" stack_frame_id=9}
+  %min.18 = f64[400,10]{1,0} broadcast(%constant.41), dimensions={}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %clamp.5 = f64[400,10]{1,0} clamp(%max.18, %mul.33, %min.18), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %sub.27 = f64[400,10]{1,0} subtract(%broadcast.46, %clamp.5), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=24}
+  %floor.9 = f64[400,10]{1,0} floor(%clamp.5), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/floor" stack_frame_id=15}
+  %convert_element_type.47 = s64[400,10]{1,0} convert(%floor.9), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=15}
+  %convert_element_type.46 = f64[400,10]{1,0} convert(%convert_element_type.47), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=24}
+  %add.34 = f64[400,10]{1,0} add(%sub.27, %convert_element_type.46), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=24}
+  %param_0.24 = f64[400,10]{1,0} parameter(0)
+  %add.33 = f64[400,10]{1,0} add(%param_0.24, %broadcast.45), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=12}
+  %mul.32 = f64[400,10]{1,0} multiply(%mul.34, %add.33), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=10}
+  %clamp.4 = f64[400,10]{1,0} clamp(%max.18, %mul.32, %min.18), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/jit(clip)/min" stack_frame_id=9}
+  %sub.26 = f64[400,10]{1,0} subtract(%broadcast.46, %clamp.4), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=26}
+  %floor.8 = f64[400,10]{1,0} floor(%clamp.4), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/floor" stack_frame_id=16}
+  %convert_element_type.45 = s64[400,10]{1,0} convert(%floor.8), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=16}
+  %convert_element_type.44 = f64[400,10]{1,0} convert(%convert_element_type.45), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/convert_element_type" stack_frame_id=26}
+  %add.32 = f64[400,10]{1,0} add(%sub.26, %convert_element_type.44), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/add" stack_frame_id=26}
+  %mul.31 = f64[400,10]{1,0} multiply(%add.34, %add.32), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=28}
+  %bitcast.25 = f64[400,1,10]{2,1,0} bitcast(%mul.31), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=28}
+  %sub.25 = f64[400,10]{1,0} subtract(%clamp.4, %convert_element_type.44), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=27}
+  %mul.30 = f64[400,10]{1,0} multiply(%add.34, %sub.25), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=29}
+  %bitcast.24 = f64[400,1,10]{2,1,0} bitcast(%mul.30), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=29}
+  %sub.24 = f64[400,10]{1,0} subtract(%clamp.5, %convert_element_type.46), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/sub" stack_frame_id=25}
+  %mul.29 = f64[400,10]{1,0} multiply(%sub.24, %add.32), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=30}
+  %bitcast.23 = f64[400,1,10]{2,1,0} bitcast(%mul.29), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=30}
+  %mul.28 = f64[400,10]{1,0} multiply(%sub.24, %sub.25), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=31}
+  %bitcast.22 = f64[400,1,10]{2,1,0} bitcast(%mul.28), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/mul" stack_frame_id=31}
+  %concatenate.15 = f64[400,4,10]{2,1,0} concatenate(%bitcast.25, %bitcast.24, %bitcast.23, %bitcast.22), dimensions={1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=32}
+  %transpose.11 = f64[400,10,4]{1,2,0} transpose(%concatenate.15), dimensions={0,2,1}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=32}
+  ROOT %copy.5 = f64[400,10,4]{2,1,0} copy(%transpose.11), metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=32}
+}
+
+ENTRY %main.4 (data_0__0_.1: f64[400,10], data_0__1_.1: f64[400,10]) -> f64[400,10] {
+  %data_0__0_.1 = f64[400,10]{1,0} parameter(0), metadata={op_name="data[0][0]"}
+  %data_0__1_.1 = f64[400,10]{1,0} parameter(1), metadata={op_name="data[0][1]"}
+  %constant.19 = f64[1,400,400]{2,1,0} constant({...}), metadata={op_name="jit(f)/vmap(jit(f_source))"}
+  %bitcast_concatenate_fusion.1 = s64[400,4,10]{2,1,0} fusion(%data_0__0_.1), kind=kLoop, calls=%fused_computation.2, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=19}
+  %transpose_copy_fusion = f64[400,10,4]{2,1,0} fusion(%data_0__1_.1, %data_0__0_.1), kind=kLoop, calls=%fused_computation.3, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=32}
+  %bitcast_concatenate_fusion = s64[400,4,10]{2,1,0} fusion(%data_0__1_.1), kind=kLoop, calls=%fused_computation.1, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/concatenate" stack_frame_id=22}
+  %copy_bitcast_fusion = f64[400,10,4]{2,1,0} fusion(%constant.19, %bitcast_concatenate_fusion, %bitcast_concatenate_fusion.1), kind=kLoop, calls=%fused_computation, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/gather" stack_frame_id=23}, backend_config={"outer_dimension_partitions":["5"]}
+  ROOT %dot.2 = f64[400,10]{1,0} dot(%transpose_copy_fusion, %copy_bitcast_fusion), lhs_batch_dims={0,1}, lhs_contracting_dims={2}, rhs_batch_dims={0,1}, rhs_contracting_dims={2}, metadata={op_name="jit(f)/vmap(jit(f_source))/jit(f_source)/kji,ji->ki/dot_general" stack_frame_id=33}
+}
+

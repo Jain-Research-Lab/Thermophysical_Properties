@@ -1,0 +1,6 @@
+name = "HelloApp"
+uuid = "21aed23f-1215-430d-be5a-509749a9dad3"
+version = "0.1.0"
+
+[deps]
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
