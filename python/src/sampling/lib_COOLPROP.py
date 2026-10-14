@@ -1,8 +1,15 @@
 from DOA.config.lib_config import numpy as np
 from CoolProp.CoolProp import AbstractState
-# from collections import OrderedDict
 import CoolProp
 import time
+
+def is_valid_material(fluid_string: str) -> bool:
+    try:
+        # Tcrit only requires the fluid name, no state variables needed
+        CP.PropsSI("Tcrit", fluid_string)
+        return True
+    except ValueError:
+        return False
 
 def get_prop_str_short(PROP_STR):
     prop_map = {"Qmass": "Q", "Hmass": "H", "Dmass": "D", 
@@ -24,16 +31,16 @@ def init_coolprop_as(material, method, PROP_IN_LST, PROP_OUT_LST):
     
     return AS, PROP_IN, PROP_OUT
     
-def loop_COOLPROP(material, method, PROP_IN, PROP_OUT, input_values):
-    AS, PROP_IN, PROP_OUT = init_coolprop_as(material, method, PROP_IN, PROP_OUT)
+def loop_COOLPROP(material, method, PROPS_IN, PROPS_OUT, input_values):
+    AS, PROP_IN, PROP_OUT = init_coolprop_as(material, method, PROPS_IN, PROPS_OUT)
     return np.array([loop_call_COOLPROP(AS, PROP_IN, PROP_OUT, p1xi, p2xi) for p1xi, p2xi in input_values])
                 
 def loop_call_COOLPROP(AS, PROP_IN, PROP_OUT, p1xi, p2xi):
     AS.update(PROP_IN, p1xi, p2xi)
     return np.array([AS.keyed_output(i) for i in PROP_OUT])
 
-def call_COOLPROP(material, method, PROP_IN, PROP_OUT, p1xi, p2xi):
-    AS, PROP_IN, PROP_OUT = init_coolprop_as(material, method, PROP_IN, PROP_OUT)
+def call_COOLPROP(material, method, PROPS_IN, PROPS_OUT, p1xi, p2xi):
+    AS, PROP_IN, PROP_OUT = init_coolprop_as(material, method, PROPS_IN, PROPS_OUT)
     AS.update(PROP_IN, p1xi, p2xi)
     return np.array([AS.keyed_output(i) for i in PROP_OUT])
 

@@ -1,16 +1,16 @@
 from ctREFPROP.ctREFPROP import REFPROPFunctionLibrary
 from DOA.config.lib_config import numpy as np
-from collections import OrderedDict
 import time
 import os
+
+def is_valid_material(material):
+    RP = REFPROPFunctionLibrary(os.environ['RPPREFIX'])
+    result = RP.SETFLUIDSdll("|".join(material))
+    return result.ierr == 0
 
 def init_refprop_dl(PROP_IN, PROP_OUT):
     RP = REFPROPFunctionLibrary(os.environ['RPPREFIX'])
     MASS_BASE_SI = RP.GETENUMdll(0,"MASS BASE SI").iEnum
-    
-    PROP_OUT_NO_Q = PROP_OUT.replace("Qmass", "")
-    PROP_OUT_UNIQUE_NO_Q = "".join(OrderedDict.fromkeys(PROP_OUT_NO_Q))
-    N = len(PROP_OUT_UNIQUE_NO_Q.replace(";", ""))
     Qflag = ("Qmass" in PROP_OUT)
     
     return RP, MASS_BASE_SI, PROP_IN, PROP_OUT, Qflag
@@ -22,7 +22,6 @@ def loop_REFPROP(material, composition, PROP_IN, PROP_OUT, input_values):
     
     M = len(data_and_herr)
     data = np.stack([data_and_herr[i][0] for i in range(M)], axis=0)
-    herr = np.stack([data_and_herr[i][1] for i in range(M)], axis=0)
     
     return data
         

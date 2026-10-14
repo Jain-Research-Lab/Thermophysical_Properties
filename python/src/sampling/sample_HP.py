@@ -46,20 +46,20 @@ def get_HP_GRID(table_config):
     PP_vec = make_input_vec(table_config)
     
     # get properties
-    if library_flag == "refprop":
-        DATA, herr = loop_REFPROP(parameters["material"], parameters["composition"], "HP", "T;D;E;S;Qmass", PP_vec)
+    if isinstance(table_config, RPGridConfig): # refprop
+        DATA = loop_REFPROP(table_config.material, table_config.composition, table_config.IN, table_config.OUT, PP_vec)
 
-    elif library_flag == "coolprop":
-        DATA = loop_COOLPROP(parameters["material"], parameters["method"], "HP", "T;D;E;S;Qmass", PP_vec)
+    elif isinstance(table_config, CPGridConfig): # coolprop
+        DATA = loop_COOLPROP(table_config.material, table_config.method, table_config.IN, table_config.OUT, PP_vec)
         
-        # fix Q
-        Tcrit, Pcrit, hcrit, Dcrit, Ecrit = get_crit_COOLPROP(parameters["material"], parameters["method"])
-        DATA[np.bitwise_and(HP_vec[:,0] > hcrit, HP_vec[:,1] > Pcrit), 4] = 1.0
-        Q_grid = np.clip(DATA[:,4].reshape((szH,szP)), 0, 1)
-        Q_grid[:,1:][np.logical_or.accumulate(np.bitwise_and(Q_grid[:,:-1] > 0.0, Q_grid[:,1:] <= 0.0), axis=1)] = 1.0
-        DATA[:,4] = Q_grid.flatten()
+        # # fix Q
+        # Tcrit, Pcrit, hcrit, Dcrit, Ecrit = get_crit_COOLPROP(table_config.material, table_config.method)
+        # DATA[np.bitwise_and(PP_vec[:,0] > hcrit, PP_vec[:,1] > Pcrit), 4] = 1.0
+        # Q_grid = np.clip(DATA[:,4].reshape((szH,szP)), 0, 1)
+        # Q_grid[:,1:][np.logical_or.accumulate(np.bitwise_and(Q_grid[:,:-1] > 0.0, Q_grid[:,1:] <= 0.0), axis=1)] = 1.0
+        # DATA[:,4] = Q_grid.flatten()
     
-    return HP_LUT_CLASS(DATA[:,1], H_gridT, DATA[:,2], P_gridT, DATA[:,0], DATA[:,4], DATA[:,3], Hmin, Hmax, Pmin, Pmax, szH, szP)
+    return HP_LUT_CLASS(DATA[:,1], PP_vec[:,0], DATA[:,2], PP_vec[:,1], DATA[:,0], DATA[:,4], DATA[:,3], Hmin, Hmax, Pmin, Pmax, szH, szP)
 
 def plot_HP_grids(DATA):
     fig1 = plt.figure(1)
@@ -100,20 +100,20 @@ def plot_HP_grids(DATA):
     plt.show()
 
 class HP_LUT_CLASS:
-    def __init__(self, D_grid, h_grid, u_grid, P_grid, T_grid, Q_grid, S_grid, hr_min, hr_max, Pr_min, Pr_max, szH, szP):
+    def __init__(self, D_grid, h_grid, u_grid, P_grid, T_grid, Q_grid, S_grid, P1_min, P1_max, P2_min, P2_max, szP1, szP2):
         # data tables
-        self.D_grid = D_grid.reshape((szP, szH)).T
-        self.h_grid = h_grid.T / 1000.0
-        self.u_grid = u_grid.reshape((szP, szH)).T / 1000.0
-        self.P_grid = P_grid.T / 1000.0
-        self.T_grid = T_grid.reshape((szP, szH)).T
-        self.x_grid = np.clip(Q_grid.reshape((szP, szH)).T, 0, 1)
-        self.S_grid = S_grid.reshape((szP, szH)).T / 1000.0
+        self.D_grid = D_grid.reshape((szP1, szP2))
+        self.h_grid = h_grid.reshape((szP1, szP2)) / 1000.0
+        self.u_grid = u_grid.reshape((szP1, szP2)) / 1000.0
+        self.P_grid = P_grid.reshape((szP1, szP2)) / 1000.0
+        self.T_grid = T_grid.reshape((szP1, szP2))
+        self.x_grid = np.clip(Q_grid.reshape((szP1, szP2)), 0, 1)
+        self.S_grid = S_grid.reshape((szP1, szP2)) / 1000.0
 
-        self.hr_min = hr_min / 1000.0
-        self.hr_max = hr_max / 1000.0
-        self.Pr_min = Pr_min / 1000.0
-        self.Pr_max = Pr_max / 1000.0
+        self.hr_min = P1_min / 1000.0
+        self.hr_max = P1_max / 1000.0
+        self.Pr_min = P2_min / 1000.0
+        self.Pr_max = P2_max / 1000.0
         
 # Example Usage
 if __name__ == "__main__":
